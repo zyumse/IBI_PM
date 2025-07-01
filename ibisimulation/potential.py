@@ -1,4 +1,3 @@
-
 import numpy as np
 
 def lj(r, epsilon1, epsilon2, sigma, inner_cut=2):
