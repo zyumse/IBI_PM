@@ -534,29 +534,6 @@ class IBISimulation:
                 else:
                     raise ValueError("PM method not supported")
 
-            # if rho < 0.2 and self.config['target'] == 'density':
-            #     scale = (rho - self.density_ref) * self.config["A"]
-            #     if scale > 0.01:
-            #         scale = 0.01
-            #     if scale < -0.01:
-            #         scale = -0.01
-            #     self.e_pot[key] = linear_attra(self.r_pot, self.e_pot[key], scale, 0)
-
-            # if self.i_iter % self.config["smooth_freq"] == 0:
-            #     if self.config['smooth_method'] == 'savitzky-golay':
-            #         self.e_pot[key][self.r_pot>1] = savgol_filter(
-            #             self.e_pot[key][self.r_pot>1],
-            #             self.config["smooth_wl"],
-            #             self.config["smooth_order"],
-            #             mode="nearest"
-            #         )
-            #     if self.config['smooth_method'] == 'spline':
-            #         self.e_pot[key] = UnivariateSpline(self.r_pot, self.e_pot[key], s=self.config['smooth_s'], k=3)(self.r_pot)
-            #     if self.config['smooth_method'] == 'gaussian':
-            #         self.e_pot[key] = gaussian_filter1d(self.e_pot[key], sigma=self.config['smooth_sigma'])
-            #     if self.config['smooth_method'] == 'fft':
-            #         self.e_pot[key] = lowpass(self.e_pot[key], self.r_pot, cutoff=self.config['fft_cutoff'])
-
             # new simplifeid smooth
             if self.i_iter % self.config["smooth_freq"] == 0:
                 self.e_pot[key] = self._smooth_potential(self.r_pot, self.e_pot[key], sigma=self.smooth_sigma)[0]
