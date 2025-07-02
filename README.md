@@ -35,13 +35,26 @@ After installation, create a new terminal and activate the environment. `ibisim`
 
 ### Pressure-matching IBI
 
+Create a separate folder for performing IBI. In the folder, one needs 
+- A YAML config file for specifying IBI settings. See ['test/toluene/config.yaml'](test/toluene/config.yaml) for an example. 
+- A lammps input file
+- An initial CG configuration lammps data file
 
-
+Pressure matching features are controlled by parameters in the config file. Turn on `density_correction: True` and set reasonable `density_correction_freq`. For 
 1. IBI-iLS
+   - `PM: rscale`
+   - `gamma: 0.1`
 
 2. IBI-iLC
+   - `PM: linear`
+   - `A: 0.01`
 
 3. other variants of IBI
+   - regular IBI: `density_correction: False`
+   - NVT or NPT is controlled in in.lmp
+   - tail correction: after performing IBI-NVT and then do `PM: linear` with `alpha: 0`
 
 ## Example (test)
+
+An example of 1-site toluene model is provided in [test/toluene](test/toluene/). In the folder, one can use `ibisim` to test the package. Note that the simulation time has been reduced for testing efficiency; one should use a longer time for converged performance. 
 
