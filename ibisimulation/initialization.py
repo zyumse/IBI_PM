@@ -8,7 +8,7 @@ class Initializer:
     def __init__(self, config_path: str):
         with open(config_path, 'r') as f:
             self.config = yaml.safe_load(f)
-        self.config['n_cpus'] = self.config.get("n_cpus", int(os.getenv("SLURM_CPUS_ON_NODE", 1)))
+        self.n_cpus = self.config.get("n_cpus", int(os.getenv("SLURM_CPUS_ON_NODE", 1)))
         self.initialize_parameters()
 
     def initialize_parameters(self):
@@ -20,7 +20,7 @@ class Initializer:
         self.density_ref = self.config["density_ref"]
 
         self.turn_on_LC = False # default off
-        self.rho = [] 
+        self.target = []
 
         # RDF and pair potenital
         self.RDF_cutoff, self.RDF_delta_r = self.config["RDF_cutoff"], self.config["RDF_delta_r"]
@@ -54,7 +54,7 @@ class Initializer:
                 if 'morse_params' in self.config:
                     self.e_pot[f"pair_{keyname}"] = morse(self.r_pot, *self.config["morse_params"][i])
                 self.f_pot[f"pair_{keyname}"] = -np.gradient(self.e_pot[f"pair_{keyname}"], self.r_pot)
-        print(f"Effective rmin: {self.effective_rmin}", flush=True) 
+        # print(f"Effective rmin: {self.effective_rmin}", flush=True) 
 
         # bond
         self.bond_types = self.config["bond_types"] if 'bond_types' in self.config else []
@@ -119,4 +119,4 @@ class Initializer:
             self.LC_A = self.config.get("A", None) if self.config['PM'] == 'linear' else None
         # smooth
         self.smooth_sigma = self.config.get("smooth_sigma", 3)
-        print(f"Smooth sigma: {self.smooth_sigma}", flush=True)
+        # print(f"Smooth sigma: {self.smooth_sigma}", flush=True)

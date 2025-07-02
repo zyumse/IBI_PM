@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import pdb
 
 class IBISimulation:
     def __init__(self, config_path):
@@ -16,14 +17,18 @@ class IBISimulation:
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description="Run the simulation wrapper.")
-    parser.add_argument("--config", type=str, default="config.yaml", help="Path to the configuration file.")
-    args = parser.parse_args()
+    try:
+        parser = argparse.ArgumentParser(description="Run the simulation wrapper.")
+        parser.add_argument("--config", type=str, default="config.yaml", help="Path to the configuration file.")
+        args = parser.parse_args()
 
-    print("Starting simulation with config:", args.config)
-    simulation = IBISimulation(args.config)
-    print("Running simulation...")
-    simulation.run_simulation()
+        print("Starting simulation with config:", args.config)
+        simulation = IBISimulation(args.config)
+        print("Running simulation...")
+        simulation.run_simulation()
+    except Exception as e:
+        print(e)
+        pdb.post_mortem()
 
     # simulation.run_simulation()
 

@@ -35,6 +35,6 @@ thermo         100
 thermo_style    custom step temp density press pxx pyy pzz pxy pxz pyz ke pe etotal vol lx ly lz
 
 # Run the simulation
-run            10000
+run            20000
 
 write_data      out.dat

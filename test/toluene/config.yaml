@@ -1,12 +1,11 @@
 # IBI parameters
-n_cpus: 4 # integer or slurm
+n_cpus: 8 # integer or slurm
 init_str: 'tmp.data'
 lmp_input: 'in.lmp'
-run_lammps_command: "mpirun lmp"
+run_lammps_command: "mpirun -n 8 lmp_mpi"
 n_iter: 100
 temp: 300
 
-# density_ref: '/scratch/gpfs/WEBB/zheng/IBI_pressure/simulations/pentadecane/AA/PDC2/density.txt'
 density_ref: 0.8635989985280287939
 pair_types: ['11']
 RDF_cutoff: 25
@@ -33,15 +32,14 @@ angle_types: []
 angle_ref: './angle.txt'
 use_existing_angleFF: "pot_AA.table"
 alpha_angle: -0.001
-# angle_params: [[
+# angle_params: [[]]
 smooth_angle: True
-
 
 target: density
 use_weight: LD
 density_correction: True
 density_correction_freq: 1
-PM: 'hybrid'
+PM: 'rscale'
 gamma: 0.1
 A: 0.001
 LC_rcut: 0

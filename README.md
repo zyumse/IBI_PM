@@ -18,10 +18,10 @@ cd gECG_thiophene/
 conda create --name your_env_name python=3.11
 conda activate your_env_name
 
-# Install required Python packages
-pip install -r requirements.txt
-pip install -e .
+# Install Python package
+pip install -e . 
 ```
+After installation, create a new terminal and activate the environment. `ibisim` will be availabel to use
 
 ## Usage
 ### CG mapping of all-atom simulation
@@ -34,6 +34,8 @@ pip install -e .
 3. Extract structure properties and density
 
 ### Pressure-matching IBI
+
+
 
 1. IBI-iLS
 
