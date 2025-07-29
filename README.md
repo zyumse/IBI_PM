@@ -31,7 +31,11 @@ After installation, create a new terminal and activate the environment. `ibisim`
 
 2. Perform CG mapping
 
+   One could use the ['scripts/run_map.py'](scripts/run_map.py) for assistance, which will covert the all-atom lammps data file and trajectory to the corresponding CG ones based on a user defined mapping.
+
 3. Extract structure properties and density
+
+   One could use ['scripts/get_str.py'](scripts/get_str.py) for assistance, which will compute the pdfs, and several other structural properties. These serve as targets in the IBI.
 
 ### Pressure-matching IBI
 
