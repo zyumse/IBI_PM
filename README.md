@@ -1,3 +1,5 @@
+go to [https://github.com/webbtheosim/pressure-consistent-ibi](https://github.com/webbtheosim/pressure-consistent-ibi) for latest version.
+
 # Pressure-matching IBI
 tools for performing pressure-matching iterative Boltzmann inversion (IBI) for coarse-grained molecular dynamics simulation
 
